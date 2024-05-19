@@ -1,0 +1,14 @@
+Anforderungen:
+
+Das Frontend wird in Angular und Typescript entwickelt.
+Es wird eine JWT Anmeldung  in Frontend mit einem Login Fenster implementiert
+
+Folgende Rollen sollen in Frontend realisiert werden
+
+Admin Rolle: kann Akten sichten, editieren, und Administrationsaufgaben machen.
+edit Rolle: kann Akten sichten und editieren
+read Rolle: kann Akten sichten
+
+Rollen, Login-Name und Password werden im Administation/Benutzer Management angelegt
+Zum allerersten Anmelden im System wird ein Default Login/Password  admin/admin angelegt
+

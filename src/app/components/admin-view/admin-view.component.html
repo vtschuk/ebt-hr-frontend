@@ -1,0 +1,224 @@
+<div class="admin-buttons">
+  <button mat-stroked-button color="primary" (click)="gotoFileList()" matTooltip="Aktenliste aufrufen">Aktenliste
+  </button>
+  <button mat-stroked-button color="primary" (click)="logout()" matTooltip="aktuellen Benutzer abmelden">Abmelden
+  </button>
+  <button mat-stroked-button color="primary" (click)="about()" matTooltip="Info über das Programm aufrufen">Info
+  </button>
+</div>
+
+<div class="admin-container">
+  <div class="akten-management">
+    Akten Management
+    <form class="form-container">
+      <h3> Position: </h3>
+      <mat-form-field class="example-full-width">
+        <mat-label>Position</mat-label>
+        <input type="text"
+               name="position"
+               placeholder="Position"
+               aria-label="Number"
+               matInput
+               [(ngModel)]="currentPosition"
+               [formControl]="positionFormControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="getText">
+          <mat-option *ngFor="let pos  of positions | async" [value]="pos">
+            {{pos.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-flat-button color="basic" (click)="addPosition()"> hinzufügen</button>
+      <button mat-flat-button color="basic" (click)="deletePosition()"> entfernen</button>
+    </form>
+
+    <div>
+      <form class="form-container">
+        <h3> Ausbildung: </h3>
+        <mat-form-field class="example-full-width">
+          <mat-label>Ausbildung</mat-label>
+          <input
+            type="text"
+            name="education"
+            placeholder="Ausbildung"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="currentEducation"
+            [formControl]="educationFormControl"
+            [matAutocomplete]="auto2">
+          <mat-autocomplete #auto2="matAutocomplete" [displayWith]="getText">
+            <mat-option *ngFor="let edu  of educations | async" [value]="edu">
+              {{edu.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <button mat-flat-button color="basic" (click)="addEducation()"> hinzufügen</button>
+        <button mat-flat-button color="basic" (click)="deleteEducation()"> entfernen</button>
+      </form>
+    </div>
+
+    <div>
+      <form class="form-container">
+        <h3>Beruf:</h3>
+        <mat-form-field>
+          <mat-label>Beruf</mat-label>
+          <input
+            type="text"
+            name="profession"
+            placeholder="Beruf"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="currentProfession"
+            [formControl]="professionFormControl"
+            [matAutocomplete]="auto3">
+          <mat-autocomplete #auto3="matAutocomplete" [displayWith]="getText">
+            <mat-option *ngFor="let prof  of professions | async" [value]="prof">
+              {{prof.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <button mat-flat-button color="basic" (click)="addProfession()"> hinzufügen</button>
+        <button mat-flat-button color="basic" (click)="deleteProfession()"> entfernen</button>
+      </form>
+    </div>
+    <div>
+      <form class="form-container">
+        <h3> Zertificate: </h3>
+        <mat-form-field>
+          <mat-label>Zertifikat</mat-label>
+          <input
+            type="text"
+            name="certificate"
+            placeholder="Zertifikat"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="currentCertificate"
+            [formControl]="certificateFormControl"
+            [matAutocomplete]="auto4">
+          <mat-autocomplete #auto4="matAutocomplete" [displayWith]="getText">
+            <mat-option *ngFor="let cert  of certificates | async" [value]="cert">
+              {{cert.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <button mat-flat-button color="basic" (click)="addCertificate()"> hinzufügen</button>
+        <button mat-flat-button color="basic" (click)="deleteCertification()"> entfernen</button>
+      </form>
+    </div>
+
+    <div>
+      <form class="form-container">
+        <h3> Kenntnisse/Fähigkeiten: </h3>
+        <mat-form-field>
+          <mat-label>Kenntnisse/Fähigkeiten</mat-label>
+          <input
+            type="text"
+            name="expertise"
+            placeholder="Kenntnisse/Fähigkeiten"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="currentExpertise"
+            [formControl]="expertiseFormControl"
+            [matAutocomplete]="auto5">
+          <mat-autocomplete #auto5="matAutocomplete" [displayWith]="getText">
+            <mat-option *ngFor="let expert   of expertises | async" [value]="expert">
+              {{expert.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <button mat-flat-button color="basic" (click)="addExpertise()"> hinzufügen</button>
+        <button mat-flat-button color="basic" (click)="deleteExpertise()"> entfernen</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="system-management">
+    System Management
+    <form class="form-container">
+      <mat-form-field>
+        <mat-label>Sprache</mat-label>
+        <input
+          type="text"
+          name="expertise"
+          placeholder="Sprache"
+          aria-label="Number"
+          matInput
+          [(ngModel)]="currentLanguage"
+          [formControl]="languageFormControl"
+          [matAutocomplete]="auto6">
+
+        <mat-autocomplete #auto6="matAutocomplete" [displayWith]="getText">
+          <mat-option *ngFor="let lang  of languages | async" [value]="lang">
+            {{lang.name}}
+          </mat-option>
+        </mat-autocomplete>
+
+      </mat-form-field>
+      <button mat-flat-button color="basic" (click)="changeLanguage()"> Ändern</button>
+    </form>
+  </div>
+
+  <div class="user-management">
+    Benutzer Management:
+    <form class="form-container">
+
+      <mat-form-field>
+        <mat-label> Benutzer</mat-label>
+        <input
+          type="text"
+          name="user"
+          placeholder="Benutzer"
+          aria-label="Number"
+          matInput
+          [(ngModel)]="currentUser" label="User"
+          [formControl]="userFormControl"
+          [matAutocomplete]="auto7">
+        <mat-autocomplete #auto7="matAutocomplete" [displayWith]="getUsername">
+          <mat-option *ngFor="let user  of users | async" [value]="user">
+            {{user.username}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-flat-button color="basic" (click)="deleteLogin()"> Löschen</button>
+    </form>
+
+    <form class="form-container">
+      <div>
+        <mat-form-field>
+          <mat-label> Rolle</mat-label>
+          <input
+            type="text"
+            name="expertise"
+            placeholder="Rolle"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="currentRole"
+            [formControl]="roleFormControl"
+            [matAutocomplete]="auto9">
+          <mat-autocomplete #auto9="matAutocomplete" [displayWith]="getText">
+            <mat-option *ngFor="let role  of roles | async" [value]="role">
+              {{role.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <form class="form-container">
+      <div>
+        <mat-form-field>
+          <mat-label> Password</mat-label>
+          <input
+            type="text"
+            name="expertise"
+            placeholder="Password"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="passwd">
+        </mat-form-field>
+        <button mat-flat-button color="basic" (click)="saveLogin()"> Speichern</button>
+      </div>
+    </form>
+  </div>
+</div>

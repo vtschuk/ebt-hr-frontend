@@ -1,0 +1,54 @@
+<div>
+  <button mat-stroked-button color="primary" (click)="addNewEntry()"> Neue Akte anlegen</button>
+  <button mat-stroked-button color="warn" (click)="administrate()"> Administration</button>
+  <button mat-stroked-button color="warn" (click)="logout()"> Abmelden</button>
+  <button mat-button color="primary" (click)="about()">Info</button>
+</div>
+
+<div class="table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 example-container">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Aktennummer</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="vorname">
+      <th mat-header-cell *matHeaderCellDef> Vorname</th>
+      <td mat-cell *matCellDef="let element"> {{element.vorname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> E-Mail</th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ansicht">
+      <th mat-header-cell *matHeaderCellDef> Ansicht</th>
+      <td mat-cell *matCellDef="let element" matTooltip="Akte sichten"><a routerLink="/overview/{{element.id}}"
+                                                                          class="nav-link">
+        Ansehen
+      </a></td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Bearbeiten</th>
+      <td mat-cell *matCellDef="let element" matTooltip="Akte bearbeiten, löschen oder archvieren"><a
+        routerLink="/akte/{{element.id}}" class="nav-link">
+        Bearbeiten
+      </a></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>
+
+
+
